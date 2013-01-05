@@ -1,12 +1,16 @@
 ---
 extends: base.j2
 default_block: main
-title: BASIC - A hyde website
-description: Home page for the BASIC hyde template
+title: Greg Czerniak's Website
+description: Home page for Greg Czerniak
 ---
 
 {% from "macros.j2" import render_excerpt with context %}
-<section class="blog_excerpt">
+
+<p>Welcome to the web home of Greg Czerniak, a computer engineer, programmer, and hobbyist game developer currently in the Detroit Metro Area.</p>
+<br>
+<p>More stuff is coming to the page soon, but in the meantime check out Ballpoint and Fortress of Arial, games I made for the Experimental Gameplay Project.</p>
+<!--<section class="blog_excerpt">
 {% set latest = site.content.walk_resources_sorted_by_time()|first %}
 
 {% if latest -%}
@@ -15,6 +19,6 @@ description: Home page for the BASIC hyde template
 <a class="button white medium"
     href="{{ content_url(latest.url) }}">Read more&hellip;</a>
 
-{%- endif %}
+{%- endif %}-->
 
 </section>

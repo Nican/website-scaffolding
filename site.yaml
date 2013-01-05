@@ -20,27 +20,27 @@ context:
                 type: page
                 url: index.html
             -
-                name: Portfolio
-                description: Portfolio
-                css_class: portfolio
+                name: Code
+                description: Code
+                css_class: code
                 type: node
-                url: portfolio
+                url: code
             -
-                name: Blog
-                description: Blog
-                css_class: blog
+                name: Games
+                description: Games
+                css_class: games
                 type: node
-                url: blog
+                url: games
             -
-                name: About
-                description: About
-                css_class: about
-                type: page
-                url: about.html
+                name: Guides
+                description: Guides
+                css_class: guides
+                type: node
+                url: guides
 meta:
     nodemeta: meta.yaml
-    created: !!timestamp 2010-01-01 00:00:00
-    author: Lakshmi Vyasarajan
+    created: !!timestamp 2012-01-05 00:00:00
+    author: Gregory Czerniak
 sorter:
     time:
         attr:
