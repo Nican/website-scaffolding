@@ -1,0 +1,45 @@
+# kalman1.py
+# written by Greg Czerniak (email is greg {aT] czerniak [dOt} info )
+#
+# Implements a single-variable linear Kalman filter.
+#
+# Note: This code is part of a larger tutorial "Kalman Filters for Undergrads"
+# located at http://greg.czerniak.info/node/5.
+import random
+import numpy
+import pylab
+
+PPY_splice "KalmanFilterLinear.py"
+
+PPY_splice "Voltmeter.py"
+
+numsteps = 60
+
+A = numpy.matrix([1])
+H = numpy.matrix([1])
+B = numpy.matrix([0])
+Q = numpy.matrix([0.00001])
+R = numpy.matrix([0.1])
+xhat = numpy.matrix([3])
+P    = numpy.matrix([1])
+
+filter = KalmanFilterLinear(A,B,H,xhat,P,Q,R)
+voltmeter = Voltmeter(1.25,0.25)
+
+measuredvoltage = []
+truevoltage = []
+kalman = []
+
+for i in range(numsteps):
+    measured = voltmeter.GetVoltageWithNoise()
+    measuredvoltage.append(measured)
+    truevoltage.append(voltmeter.GetVoltage())
+    kalman.append(filter.GetCurrentState()[0,0])
+    filter.Step(numpy.matrix([0]),numpy.matrix([measured]))
+
+pylab.plot(range(numsteps),measuredvoltage,'b',range(numsteps),truevoltage,'r',range(numsteps),kalman,'g')
+pylab.xlabel('Time')
+pylab.ylabel('Voltage')
+pylab.title('Voltage Measurement with Kalman Filter')
+pylab.legend(('measured','true voltage','kalman'))
+PPY_showstuff pylab
