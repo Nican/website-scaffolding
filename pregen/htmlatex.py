@@ -72,7 +72,7 @@ def SpliceTag(markup):
   if matchObject != None:
     theCode = GetFileContents('splice/'+matchObject.group(1))
     return re.sub(thePattern,
-                  '<code>'+NBSPize(theCode)+'</code>',
+                  '<div class="snippet">'+NBSPize(theCode)+'</div>',
                   markup,1,re.DOTALL)
   return markup
 
