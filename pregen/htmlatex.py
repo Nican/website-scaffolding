@@ -18,7 +18,8 @@ def MakeLatexFile(excerpt,tempfile,color1,color2):
 def CallLatex(tempfile,filename,excerpt):
   latexcode = NCall(["latex", "-interaction=batchmode", tempfile],False)
   if latexcode != 0:
-    OutputFile(excerpt + '\n\n' + GetFileContents(tempfile+".log"),filename+".log")
+    OutputFile(excerpt + '\n\n' + GetFileContents(tempfile+".log"),
+               filename+".log")
   RemoveAllIfPossible([tempfile+'.log',tempfile+'.aux'])
   if latexcode != 0:
     print "Latex error in:"
@@ -74,7 +75,9 @@ def SpliceTag(markup):
   matchObject = re.search(thePattern,markup,re.DOTALL)
   if matchObject != None:
     theCode = GetFileContents('splice/'+matchObject.group(1))
-    return re.sub(thePattern,'<code>'+NBSPize(theCode)+'</code>',markup,1,re.DOTALL)
+    return re.sub(thePattern,
+                  '<code>'+NBSPize(theCode)+'</code>',
+                  markup,1,re.DOTALL)
   return markup
 
 def ShowGraph(markup):
@@ -84,7 +87,11 @@ def ShowGraph(markup):
     pyoutfile = Unsuffix(matchObject.group(1),'ppy')+'.py'
     pngoutfile = Unsuffix(matchObject.group(1),'ppy')+'.png'
     if os.path.exists("../system/files/"+pngoutfile) == False:
-      precode = NCall([pythonexec,'prepython.py','-in='+matchObject.group(1),'-out=temp/'+pyoutfile,'-publish=false'],False)
+      precode = NCall([pythonexec,
+                       'prepython.py',
+                       '-in='+matchObject.group(1),
+                       '-out=temp/'+pyoutfile,
+                       '-publish=false'],False)
       if precode == 0:
         graphcode = NCall([pythonexec,'temp/'+pyoutfile],False)
       else:
@@ -95,9 +102,15 @@ def ShowGraph(markup):
         return None
       shutil.copy('temp/tempout.png','../system/files/'+pngoutfile)
     if os.path.exists("../system/files/"+pyoutfile) == False:
-      precode = NCall([pythonexec,'prepython.py','-in='+matchObject.group(1),'-out=temp/'+pyoutfile,'-publish=true'],False)
+      precode = NCall([pythonexec,
+                       'prepython.py',
+                       '-in='+matchObject.group(1),
+                       '-out=temp/'+pyoutfile,
+                       '-publish=true'],False)
       shutil.copy('temp/'+pyoutfile,'../system/files/'+pyoutfile)
-    markup = re.sub(thePattern,'<a href="../../system/files/'+pyoutfile+'.txt"><img src="../../system/files/'+pngoutfile+'" /></a>',markup,1,re.DOTALL)
+      markup = re.sub(thePattern,'<a href="../../system/files/'+pyoutfile+
+                      '.txt"><img src="../../system/files/'+pngoutfile+'" />'+
+                      '</a>',markup,1,re.DOTALL)
   return markup
 
 def EquationTag(markup):
@@ -115,7 +128,9 @@ def EquationTag(markup):
         DPrint("wrote " + fileName)
     else:
       fileName = MakeFileName(matchObject.group(2)+res)+".png"
-    markup = re.sub(thePattern,'<img src="../../system/files/'+fileName+'">',markup,1,re.DOTALL)
+    markup = re.sub(thePattern,
+                    '<img src="../../system/files/'+fileName+'">',
+                    markup,1,re.DOTALL)
   return markup
 
 inFile = GetArg(sys.argv,1,'kalman1.markup')
