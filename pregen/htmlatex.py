@@ -36,13 +36,16 @@ def CallConvert(dvipscode, tempdir,tempfile,color1,resolution):
   else:
     return 1
 
-def CallDVIPS(latexcode,tempdir,tempfile):
+def CallDVIPS(latexcode,tmpdir,tmpfile):
   if latexcode == 0:
-    shutil.copy(tempfile+".dvi",tempdir+"/"+tempfile+".dvi")
-    dvipscode = NCall(["dvips", "-E", tempdir+"/"+tempfile+".dvi"],False)
+    shutil.copy(tmpfile+".dvi",tmpdir+"/"+tmpfile+".dvi")
+    dvipscode = NCall(["dvips", "-E", tmpdir+"/"+tmpfile+".dvi"],False)
     if dvipscode == 0:
-      shutil.copy(tempfile+".ps",tempdir+"/"+tempfile+".eps")
-    RemoveAllIfPossible([tempfile+'.ps',tempfile+".tex",tempfile+'.dvi',tempdir+"/"+tempfile+".dvi"])
+      shutil.copy(tempfile+".ps",tmpdir+"/"+tmpfile+".eps")
+    RemoveAllIfPossible([tmpfile+'.ps',
+                         tmpfile+".tex",
+                         tmpfile+'.dvi',
+                         tmpdir+"/"+tmpfile+".dvi"])
     return dvipscode
   else:
     return 1
@@ -126,24 +129,3 @@ stuff = ConvertPass(ShowGraph,stuff)
 DPrint("Splice Tag Pass")
 stuff = ConvertPass(SpliceTag,stuff)
 OutputFile(stuff,outFile)
-
-# resolution="150x150"
-# format="png"
-# color1="white"
-# color2="black"
-# trans=0
-# noformula=0
-# aa=1
-# extra_header="$HOME/.tex2im_header"
-
-#\documentclass[12pt]{article}
-#\usepackage{color}
-#\usepackage[dvips]{graphicx}
-#\pagestyle{empty}
-# \pagecolor{$color1}
-# \begin{document}
-# {\color{$color2}
-# \begin{eqnarray*}
-#derp
-#\end{eqnarray*}}
-#\end{document}
