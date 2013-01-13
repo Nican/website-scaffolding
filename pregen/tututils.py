@@ -14,13 +14,12 @@ def NBSPize(theIn):
     done = False
     l = l.replace('>','&gt;')
     l = l.replace('<','&lt;')
-    while done == False:
+    while not done:
       matchObject = re.search(thePattern,l,re.DOTALL)
       if matchObject != None:
         repped = matchObject.group(1).replace(' ','&nbsp;')
         newString = repped + ' ' + matchObject.group(2)
         l = re.sub(thePattern,newString,l,1,re.DOTALL)
-        #print l
       else:
         done = True
     if l != '':
@@ -38,7 +37,7 @@ def GetFileContents(filename):
   return theMarkup
 
 def DPrint(string):
-  if debugmode == True:
+  if debugmode:
     print string
 
 def RemoveIfPossible(filename):
@@ -50,7 +49,7 @@ def RemoveIfPossible(filename):
 def ConvertPass(fn,markup):
   if markup != None:
     done = False
-    while done == False:
+    while not done:
       res = fn(markup)
       if res == None:
         return None
@@ -62,7 +61,7 @@ def ConvertPass(fn,markup):
 
 def NCall(callList,shellOnWin):
   fnull = open(os.devnull, 'w')
-  if shellOnWin == True and os.name == "nt":
+  if shellOnWin and os.name == "nt":
     code = call(callList,stdout=fnull,stderr=fnull,shell=True)
   else:
     code = call(callList,stdout=fnull)
@@ -86,7 +85,6 @@ def RemoveAllIfPossible(fileList):
 def FileExists(excerpt,resolution,mediaDir):
   filename = MakeFileName(excerpt+resolution)
   check = SlashAtEnd(mediaDir)+filename+".png"
-  #DPrint("checking for " + check)
   if os.path.exists(check):
     return True
   return False
@@ -156,6 +154,6 @@ def SlashAtEnd(theString):
 def FindOverallDest(htmlOutputDir,mediaDir):
   derp = string.split(htmlOutputDir,'/')
   result = ''
-  for i in range(NumNonBlanks(derp)):
+  for _ in range(NumNonBlanks(derp)):
     result += '../'
   return result + SlashAtEnd(mediaDir)

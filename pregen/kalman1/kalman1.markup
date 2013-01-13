@@ -239,12 +239,12 @@ V_{n} = V_{n-1} \rightarrow A = \left[ \begin{array}{c}
 <p>&nbsp;</p>
 <h3>Execution and Python code</h3>
 <p><showgraph src="kalman1.ppy" /></p>
-<p>For brevity, I don't list all the code in this guide. The complete file is available: <a href="http://greg.czerniak.info/system/files/kalman1.py.txt">kalman1.py</a> . I highly recommend you read through it and play with the starting values.</p>
+<p>For brevity, I don't list all the code in this guide. The complete file is available: <a href="kalman1/kalman1.py.txt">kalman1.py</a> . I highly recommend you read through it and play with the starting values.</p>
 <p>&nbsp;</p>
 <h2>Multi-Variable Example</h2>
 <h3>Situation</h3>
 <p>We will use a common physics problem with a twist. This example will involve firing a ball from a cannon at at 45-degree angle at a muzzle velocity of 100 units/sec. However, we will also have a camera that will record the ball's position from the side every second. The positions measured from the camera have significant measurement error. We also have precise detectors in the ball that give the X and Y velocity every second.</p>
-<p><img src="guides/kalman1/cannon.png" alt="" /></p>
+<p><img src="kalman1/cannon.png" alt="" /></p>
 <p>(not drawn to scale)</p>
 <p>&nbsp;</p>
 <p>The kinematic equations for this situation, done to death in physics classes around the world, are:</p>
@@ -437,7 +437,7 @@ R = \left[ \begin{array}{llll}
 <h3>Execution and Python code</h3>
 <p><showgraph src="kalman2.ppy" /></p>
 <p>That's a pretty good estimate, given how much error our measurements have!</p>
-<p>The complete code for this example is available at: <a href="http://greg.czerniak.info/system/files/kalman2.py.txt">kalman2.py</a></p>
+<p>The complete code for this example is available at: <a href="kalman1/kalman2.py.txt">kalman2.py</a></p>
 <p>&nbsp;</p>
 <h2>Conclusion</h2>
 <p>I hope that this guide was useful to you. This is a living document. If you have any suggestions, comments, etc, please send me a message at greg {at] czerniak (dot} info so I can make this guide even better. ESPECIALLY send me a message if you got confused somewhere -- you're probably not the first or last person that will get hung up at that point.</p>

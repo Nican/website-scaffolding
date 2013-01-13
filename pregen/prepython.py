@@ -19,26 +19,32 @@ def ShowStuff(markup):
 
 def Splice(markup):
   thePattern = 'PPY_splice "(.*?)"\n'
-  altPattern = 'PPY_splice "(.*?)"\r\n'
   matchObject = re.search(thePattern,markup,re.DOTALL)
   if matchObject == None:
-    matchObject = re.search(altPattern,markup,re.DOTALL)
+    thePattern = 'PPY_splice "(.*?)"\r\n'
+    matchObject = re.search(thePattern,markup,re.DOTALL)
   if matchObject != None and matchObject.lastindex >= 1:
-    #print "matched " + matchObject.group(0)
+    print "found"
     try:
       fp = open("splice/"+matchObject.group(1),'rt')
       pycontents = fp.read()
+      #print pycontents
       fp.close()
     except:
       print "Splice: could not open " + matchObject.group(1)
       return None
-    return re.sub(thePattern,pycontents,markup,1,re.DOTALL)
+    result = re.sub(thePattern,pycontents,markup,1,re.DOTALL)
+    print result
+    return result
+  print "broken"
   return markup
 
-shouldPublish = GetNamedArg(sys.argv,'publish','true')
-infile = GetNamedArg(sys.argv,'in','kalman1.ppy')
-outfile = GetNamedArg(sys.argv,'out','kalman1/kalman1.py')
-
-output = ConvertPass(Splice,GetFileContents(infile))
-output = ConvertPass(ShowStuff,output)
-OutputFile(output,outfile)
+if __name__ == '__main__':
+  shouldPublish = GetNamedArg(sys.argv,'publish','true')
+  infile = GetNamedArg(sys.argv,'in','kalman1.ppy')
+  outfile = GetNamedArg(sys.argv,'out','kalman1/kalman1.py')
+  DPrint("Splice")
+  output = ConvertPass(Splice,GetFileContents(infile))
+  DPrint("Show")
+  output = ConvertPass(ShowStuff,output)
+  OutputFile(output,outfile)
