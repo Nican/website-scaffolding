@@ -11,9 +11,7 @@ elif os.name == 'posix':
   pythonexec = 'python'
 
 def MakeLatexFile(excerpt,tempfile,color1,color2):
-  OutputFile(GeneratePreamble(color1,color2)
-             +excerpt
-             +GenerateEnding(),tempfile)
+  OutputFile(GeneratePreamble(color1,color2)+excerpt+GenerateEnding(),tempfile)
 
 def CallLatex(tempfile,filename,excerpt):
   latexcode = NCall(["latex", "-interaction=batchmode", tempfile],False)
