@@ -1,4 +1,8 @@
 #!/bin/bash
+if [ `uname` == 'Darwin' ]
+  then
+    alias python='python2.7-32'
+fi
 mkdir content/guides/kalman1
 cp pregen/kalman1/static/* content/guides/kalman1/
 cd pregen/kalman1
