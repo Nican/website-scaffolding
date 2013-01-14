@@ -6,9 +6,7 @@ from tututils import *
 if os.name == 'nt':
   pythonexec = "C:\python27\python"
 elif os.name == 'posix':
-  print os.uname()
   if os.uname()[0] == 'Darwin':
-    print "mac mode"
     pythonexec = 'python2.7-32'
   else:
     pythonexec = 'python'

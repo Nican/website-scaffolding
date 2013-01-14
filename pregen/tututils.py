@@ -26,7 +26,7 @@ def NBSPize(theIn):
       res += l + '\n'
   return res
 
-def DPrintReturnCode(executable,code):
+def d_print_return_code(executable,code):
   if code != 0:
     d_print(executable + " return code: " + str(code))
 
@@ -67,7 +67,7 @@ def NCall(callList,shellOnWin):
     code = call(callList,stdout=fnull)
   fnull.close()
   if len(callList) > 0:
-    DPrintReturnCode(callList[0],code)
+    d_print_return_code(callList[0],code)
   return code
 
 def output_file(contents,filename):
