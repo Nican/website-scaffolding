@@ -478,5 +478,19 @@ a.backlink:hover, a.prev:hover, a.next:hover{
   -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
   -o-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+  background-color: #FFFFFF;
+}
+
+h2 {
+  font-size: 30px;
+  -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+  -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+  -o-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
   background-color: #F0F3F3;
+}
+
+h3 {
+  font-size: 20px;
+  font-weight: bold;
 }
