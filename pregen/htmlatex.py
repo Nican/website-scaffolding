@@ -1,8 +1,6 @@
 import re
 import os
 import shutil
-#import codecs
-#import StringIO
 from tututils import *
 
 if os.name == 'nt':
