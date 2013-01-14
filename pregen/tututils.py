@@ -28,7 +28,7 @@ def NBSPize(theIn):
 
 def DPrintReturnCode(executable,code):
   if code != 0:
-    DPrint(executable + " return code: " + str(code))
+    d_print(executable + " return code: " + str(code))
 
 def GetFileContents(filename):
   fp = open(filename,'r')
@@ -36,7 +36,7 @@ def GetFileContents(filename):
   fp.close()
   return theMarkup
 
-def DPrint(string):
+def d_print(string):
   if debugmode:
     print string
 
@@ -70,13 +70,13 @@ def NCall(callList,shellOnWin):
     DPrintReturnCode(callList[0],code)
   return code
 
-def OutputFile(contents,filename):
+def output_file(contents,filename):
   if contents != None:
     fp = open(filename,"wt")
     fp.write(contents)
     fp.close()
   else:
-    DPrint("contents are null for OutputFile")
+    d_print("contents are null for OutputFile")
 
 def RemoveAllIfPossible(fileList):
   for fileName in fileList:

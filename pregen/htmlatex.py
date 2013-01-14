@@ -11,12 +11,12 @@ elif os.name == 'posix':
   pythonexec = 'python'
 
 def MakeLatexFile(excerpt,tmpfile,color1,color2):
-  OutputFile(GeneratePreamble(color1,color2)+excerpt+GenerateEnding(),tmpfile)
+  output_file(GeneratePreamble(color1,color2)+excerpt+GenerateEnding(),tmpfile)
 
 def CallLatex(tmpfile,filename,excerpt):
   latexcode = NCall(["latex", "-interaction=batchmode", tmpfile],False)
   if latexcode != 0:
-    OutputFile(excerpt + '\n\n' + GetFileContents(tmpfile+".log"),
+    output_file(excerpt + '\n\n' + GetFileContents(tmpfile+".log"),
                filename+".log")
   RemoveAllIfPossible([tmpfile+'.log',tmpfile+'.aux'])
   if latexcode != 0:
@@ -66,7 +66,7 @@ def MakePNG(excerpt,resolution):
     return None
   return filename
 
-def SpliceTag(markup):
+def splice_tag(markup):
   thePattern = '<splice src="(.*?)" />'
   matchObject = re.search(thePattern,markup,re.DOTALL)
   if matchObject != None:
@@ -76,7 +76,7 @@ def SpliceTag(markup):
                   markup,1,re.DOTALL)
   return markup
 
-def ShowGraph(markup):
+def show_graph(markup):
   thePattern = '<showgraph src="(.*?)" />'
   matchObject = re.search(thePattern,markup,re.DOTALL)
   if matchObject != None:
@@ -91,10 +91,10 @@ def ShowGraph(markup):
       if precode == 0:
         graphcode = NCall([pythonexec,'temp/'+pyoutfile],False)
       else:
-        DPrint("prepython failed for "+matchObject.group(1))
+        d_print("prepython failed for "+matchObject.group(1))
         return None
       if graphcode != 0:
-        DPrint("graph call failed for "+pyoutfile)
+        d_print("graph call failed for "+pyoutfile)
         return None
       shutil.copy('temp/tempout.png',relPath+pngoutfile)
     if not os.path.exists(relPath+pyoutfile):
@@ -109,7 +109,7 @@ def ShowGraph(markup):
                     '</a>',markup,1,re.DOTALL)
   return markup
 
-def EquationTag(markup):
+def equation_tag(markup):
   thePattern = '<equation(.*?)>(.*?)</equation>'
   matchObject = re.search(thePattern,markup,re.DOTALL)
   if matchObject != None:
@@ -117,11 +117,11 @@ def EquationTag(markup):
     if not FileExists(matchObject.group(2),res,relPath):
       fileName = MakePNG(matchObject.group(2),res)
       if fileName == None:
-        DPrint("broken")
+        d_print("broken")
         return None
       else:
         fileName = fileName+".png"
-        DPrint("wrote " + fileName)
+        d_print("wrote " + fileName)
     else:
       fileName = MakeFileName(matchObject.group(2)+res)+".png"
     markup = re.sub(thePattern,
@@ -137,10 +137,10 @@ if __name__ == '__main__':
   tempdir = GetArg(sys.argv,5,'temp/')
 
   print "outfile is " + outFile
-  DPrint("Equation Tag Pass")
-  stuff = ConvertPass(EquationTag,GetFileContents(inFile))
-  DPrint("ShowGraph Tag Pass")
-  stuff = ConvertPass(ShowGraph,stuff)
-  DPrint("Splice Tag Pass")
-  stuff = ConvertPass(SpliceTag,stuff)
-  OutputFile(stuff,outFile)
+  d_print("Equation Tag Pass")
+  stuff = ConvertPass(equation_tag,GetFileContents(inFile))
+  d_print("ShowGraph Tag Pass")
+  stuff = ConvertPass(show_graph,stuff)
+  d_print("Splice Tag Pass")
+  stuff = ConvertPass(splice_tag,stuff)
+  output_file(stuff,outFile)
