@@ -8,7 +8,12 @@ from tututils import *
 if os.name == 'nt':
   pythonexec = "C:\python27\python"
 elif os.name == 'posix':
-  pythonexec = 'python'
+  print os.uname()
+  if os.uname()[0] == 'Darwin':
+    print "mac mode"
+    pythonexec = 'python2.7-32'
+  else:
+    pythonexec = 'python'
 
 def MakeLatexFile(excerpt,tmpfile,color1,color2):
   OutputFile(GeneratePreamble(color1,color2)+excerpt+GenerateEnding(),tmpfile)

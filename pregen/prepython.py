@@ -28,7 +28,6 @@ def Splice(markup):
     try:
       fp = open("splice/"+matchObject.group(1),'rt')
       pycontents = fp.read()
-      #print pycontents
       fp.close()
     except:
       print "Splice: could not open " + matchObject.group(1)
@@ -36,7 +35,6 @@ def Splice(markup):
     result = re.sub(thePattern,pycontents,markup,1,re.DOTALL)
     print result
     return result
-  print "broken"
   return markup
 
 if __name__ == '__main__':
