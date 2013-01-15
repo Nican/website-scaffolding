@@ -12,14 +12,14 @@ elif os.name == 'posix':
     pythonexec = 'python'
 
 def make_latex_file(excerpt,tmpfile,color1,color2):
-  output_file(GeneratePreamble(color1,color2)+excerpt+GenerateEnding(),tmpfile)
+  output_file(generate_preamble(color1,color2)+excerpt+generate_ending(),tmpfile)
 
 def call_latex(tmpfile,filename,excerpt):
   latexcode = NCall(["latex", "-interaction=batchmode", tmpfile],False)
   if latexcode != 0:
-    output_file(excerpt + '\n\n' + GetFileContents(tmpfile+".log"),
+    output_file(excerpt + '\n\n' + get_file_contents(tmpfile+".log"),
                filename+".log")
-  RemoveAllIfPossible([tmpfile+'.log',tmpfile+'.aux'])
+  remove_all_if_possible([tmpfile+'.log',tmpfile+'.aux'])
   if latexcode != 0:
     print "Latex error in:"
     print excerpt
@@ -42,10 +42,10 @@ def call_dvips(latexcode,tmpdir,tmpfile):
     dvipscode = NCall(["dvips", "-E", tmpdir+tmpfile+".dvi"],False)
     if dvipscode == 0:
       shutil.copy(tmpfile+".ps",tmpdir+tmpfile+".eps")
-    RemoveAllIfPossible([tmpfile+'.ps',
-                         tmpfile+".tex",
-                         tmpfile+'.dvi',
-                         tmpdir+tmpfile+".dvi"])
+    remove_all_if_possible([tmpfile+'.ps',
+                            tmpfile+".tex",
+                            tmpfile+'.dvi',
+                            tmpdir+tmpfile+".dvi"])
     return dvipscode
   else:
     return 1
@@ -53,7 +53,7 @@ def call_dvips(latexcode,tmpdir,tmpfile):
 def make_png(excerpt,resolution):
   # This function borrows heavily from tex2im Version 1.8
   # at http://www.nought.de/tex2im.html .
-  filename = MakeFileName(excerpt+resolution)
+  filename = make_file_name(excerpt+resolution)
   tempfile = 'out'
   color1='white'
   color2='black'
@@ -71,9 +71,9 @@ def splice_tag(markup):
   thePattern = '<splice src="(.*?)" />'
   matchObject = re.search(thePattern,markup,re.DOTALL)
   if matchObject != None:
-    theCode = GetFileContents('splice/'+matchObject.group(1))
+    theCode = get_file_contents('splice/'+matchObject.group(1))
     return re.sub(thePattern,
-                  '<div class="snippet">'+NBSPize(theCode)+'</div>',
+                  '<div class="snippet">'+nbspize(theCode)+'</div>',
                   markup,1,re.DOTALL)
   return markup
 
@@ -81,8 +81,8 @@ def show_graph(markup):
   thePattern = '<showgraph src="(.*?)" />'
   matchObject = re.search(thePattern,markup,re.DOTALL)
   if matchObject != None:
-    pyoutfile = Unsuffix(matchObject.group(1),'ppy')+'.py'
-    pngoutfile = Unsuffix(matchObject.group(1),'ppy')+'.png'
+    pyoutfile = unsuffix(matchObject.group(1),'ppy')+'.py'
+    pngoutfile = unsuffix(matchObject.group(1),'ppy')+'.png'
     if not os.path.exists(relPath+pngoutfile):
       precode = NCall([pythonexec,
                        '../prepython.py',
@@ -114,8 +114,8 @@ def equation_tag(markup):
   thePattern = '<equation(.*?)>(.*?)</equation>'
   matchObject = re.search(thePattern,markup,re.DOTALL)
   if matchObject != None:
-    res = GetResolution(matchObject.group(1))
-    if not FileExists(matchObject.group(2),res,relPath):
+    res = get_resolution(matchObject.group(1))
+    if not file_exists(matchObject.group(2),res,relPath):
       fileName = make_png(matchObject.group(2),res)
       if fileName == None:
         d_print("broken")
@@ -124,24 +124,24 @@ def equation_tag(markup):
         fileName = fileName+".png"
         d_print("wrote " + fileName)
     else:
-      fileName = MakeFileName(matchObject.group(2)+res)+".png"
+      fileName = make_file_name(matchObject.group(2)+res)+".png"
     markup = re.sub(thePattern,
                     '<img src="'+webPath+fileName+'">',
                     markup,1,re.DOTALL)
   return markup
 
 if __name__ == '__main__':
-  inFile = GetArg(sys.argv,1,'kalman1.markup')
-  outFile = GetArg(sys.argv,2,"kalman1/"+Unsuffix(inFile,'markup')+".html")
-  relPath = GetArg(sys.argv,3,'../system/files/')
-  webPath = GetArg(sys.argv,4,'../../system/files/')
-  tempdir = GetArg(sys.argv,5,'temp/')
+  inFile = get_arg(sys.argv,1,'kalman1.markup')
+  outFile = get_arg(sys.argv,2,"kalman1/"+unsuffix(inFile,'markup')+".html")
+  relPath = get_arg(sys.argv,3,'../system/files/')
+  webPath = get_arg(sys.argv,4,'../../system/files/')
+  tempdir = get_arg(sys.argv,5,'temp/')
 
   print "outfile is " + outFile
   d_print("Equation Tag Pass")
-  stuff = ConvertPass(equation_tag,GetFileContents(inFile))
+  stuff = convert_pass(equation_tag,get_file_contents(inFile))
   d_print("ShowGraph Tag Pass")
-  stuff = ConvertPass(show_graph,stuff)
+  stuff = convert_pass(show_graph,stuff)
   d_print("Splice Tag Pass")
-  stuff = ConvertPass(splice_tag,stuff)
+  stuff = convert_pass(splice_tag,stuff)
   output_file(stuff,outFile)

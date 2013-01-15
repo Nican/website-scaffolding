@@ -6,7 +6,7 @@ import hashlib
 debugmode = True
 from subprocess import call
 
-def NBSPize(theIn):
+def nbspize(theIn):
   thePattern = '([ ]+?) (\S)'
   lines = theIn.split('\n')
   res = ''
@@ -30,7 +30,7 @@ def d_print_return_code(executable,code):
   if code != 0:
     d_print(executable + " return code: " + str(code))
 
-def GetFileContents(filename):
+def get_file_contents(filename):
   fp = open(filename,'r')
   theMarkup = fp.read()
   fp.close()
@@ -40,13 +40,13 @@ def d_print(string):
   if debugmode:
     print string
 
-def RemoveIfPossible(filename):
+def remove_if_possible(filename):
   try:
     os.remove(filename)
   except Exception, err:
     print "couldn't remove " + filename + " due to error " + str(err)
 
-def ConvertPass(fn,markup):
+def convert_pass(fn,markup):
   if markup != None:
     done = False
     while not done:
@@ -78,24 +78,24 @@ def output_file(contents,filename):
   else:
     d_print("contents are null for OutputFile")
 
-def RemoveAllIfPossible(fileList):
+def remove_all_if_possible(fileList):
   for fileName in fileList:
-    RemoveIfPossible(fileName)
+    remove_if_possible(fileName)
 
-def FileExists(excerpt,resolution,mediaDir):
-  filename = MakeFileName(excerpt+resolution)
-  check = SlashAtEnd(mediaDir)+filename+".png"
+def file_exists(excerpt,resolution,mediaDir):
+  filename = make_file_name(excerpt+resolution)
+  check = slash_at_end(mediaDir)+filename+".png"
   if os.path.exists(check):
     return True
   return False
 
-def MakeFileName(excerpt):
+def make_file_name(excerpt):
   theHash = hashlib.sha256()
   theHash.update(excerpt)
   return theHash.hexdigest()
 
 # Unit tested
-def GetNamedArg(argv,argname,defaultArg):
+def get_named_arg(argv,argname,defaultArg):
   argPattern = '-(.*?)=(.*)'
   for i in argv:
     matchObj = re.search(argPattern,i,re.DOTALL)
@@ -104,13 +104,13 @@ def GetNamedArg(argv,argname,defaultArg):
   return defaultArg
 
 # Unit tested
-def GetArg(argv,num,defaultArg):
+def get_arg(argv,num,defaultArg):
   if len(argv) >= num+1:
     return argv[num]
   return defaultArg
 
 # Unit tested
-def GetResolution(argstring):
+def get_resolution(argstring):
   resPattern = 'resolution="(.*?)"'
   matchObj = re.search(resPattern,argstring,re.DOTALL)
   if matchObj != None:
@@ -118,12 +118,12 @@ def GetResolution(argstring):
   return '250x250'
 
 # Unit tested
-def Unsuffix(filename,suffix):
+def unsuffix(filename,suffix):
   ind = string.rfind(filename,'.'+suffix)
   return filename[:ind]
 
 # Unit tested
-def GeneratePreamble(color1,color2):
+def generate_preamble(color1,color2):
   preamble  = '\\documentclass[12pt]{article}\n'
   preamble += '\\usepackage{color}\n'
   preamble += '\\usepackage[dvips]{graphicx}\n'
@@ -134,26 +134,18 @@ def GeneratePreamble(color1,color2):
   return preamble
 
 # Unit tested
-def GenerateEnding():
+def generate_ending():
   return '\\end{document}'
 
-def NumNonBlanks(theList):
+def num_non_blanks(theList):
   count = 0
   for i in theList:
     if i != '' and i != '.':
       count += 1
   return count
 
-def SlashAtEnd(theString):
+def slash_at_end(theString):
   if theString[-1] == '/':
     return theString
   else:
     return theString + '/'
-
-# Unit tested
-def FindOverallDest(htmlOutputDir,mediaDir):
-  derp = string.split(htmlOutputDir,'/')
-  result = ''
-  for _ in range(NumNonBlanks(derp)):
-    result += '../'
-  return result + SlashAtEnd(mediaDir)

@@ -6,7 +6,7 @@ import codecs
 from tututils import *
 from subprocess import call
 
-def ShowStuff(markup):
+def show_stuff(markup):
   thePattern = '\nPPY_showstuff (.*?)\Z'
   matchObject = re.search(thePattern,markup,re.DOTALL)
   if matchObject != None and matchObject.lastindex >= 1:
@@ -17,7 +17,7 @@ def ShowStuff(markup):
       return re.sub(thePattern,"\n"+prefix+".savefig('temp/tempout.png')",markup,1,re.DOTALL)
   return markup
 
-def Splice(markup):
+def splice(markup):
   thePattern = 'PPY_splice "(.*?)"\n'
   matchObject = re.search(thePattern,markup,re.DOTALL)
   if matchObject == None:
@@ -30,7 +30,7 @@ def Splice(markup):
       pycontents = fp.read()
       fp.close()
     except:
-      print "Splice: could not open " + matchObject.group(1)
+      print "splice: could not open " + matchObject.group(1)
       return None
     result = re.sub(thePattern,pycontents,markup,1,re.DOTALL)
     print result
@@ -38,11 +38,11 @@ def Splice(markup):
   return markup
 
 if __name__ == '__main__':
-  shouldPublish = GetNamedArg(sys.argv,'publish','true')
-  infile = GetNamedArg(sys.argv,'in','kalman1.ppy')
-  outfile = GetNamedArg(sys.argv,'out','kalman1/kalman1.py')
-  d_print("Splice")
-  output = ConvertPass(Splice,GetFileContents(infile))
+  shouldPublish = get_named_arg(sys.argv,'publish','true')
+  infile = get_named_arg(sys.argv,'in','kalman1.ppy')
+  outfile = get_named_arg(sys.argv,'out','kalman1/kalman1.py')
+  d_print("splice")
+  output = convert_pass(splice,get_file_contents(infile))
   d_print("Show")
-  output = ConvertPass(ShowStuff,output)
+  output = convert_pass(show_stuff,output)
   output_file(output,outfile)
