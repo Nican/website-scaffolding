@@ -15,7 +15,7 @@ def make_latex_file(excerpt,tmpfile,color1,color2):
   output_file(generate_preamble(color1,color2)+excerpt+generate_ending(),tmpfile)
 
 def call_latex(tmpfile,filename,excerpt):
-  latexcode = NCall(["latex", "-interaction=batchmode", tmpfile],False)
+  latexcode = n_call(["latex", "-interaction=batchmode", tmpfile],False)
   if latexcode != 0:
     output_file(excerpt + '\n\n' + get_file_contents(tmpfile+".log"),
                filename+".log")
@@ -27,7 +27,7 @@ def call_latex(tmpfile,filename,excerpt):
 
 def call_convert(dvipscode, tmpdir,tmpfile,color1,resolution):
   if dvipscode == 0:
-    return NCall(["convert",
+    return n_call(["convert",
                   "-antialias",
                   "-transparent",color1,
                   "-density",resolution,
@@ -39,7 +39,7 @@ def call_convert(dvipscode, tmpdir,tmpfile,color1,resolution):
 def call_dvips(latexcode,tmpdir,tmpfile):
   if latexcode == 0:
     shutil.copy(tmpfile+".dvi",tmpdir+tmpfile+".dvi")
-    dvipscode = NCall(["dvips", "-E", tmpdir+tmpfile+".dvi"],False)
+    dvipscode = n_call(["dvips", "-E", tmpdir+tmpfile+".dvi"],False)
     if dvipscode == 0:
       shutil.copy(tmpfile+".ps",tmpdir+tmpfile+".eps")
     remove_all_if_possible([tmpfile+'.ps',
@@ -84,13 +84,13 @@ def show_graph(markup):
     pyoutfile = unsuffix(matchObject.group(1),'ppy')+'.py'
     pngoutfile = unsuffix(matchObject.group(1),'ppy')+'.png'
     if not os.path.exists(relPath+pngoutfile):
-      precode = NCall([pythonexec,
+      precode = n_call([pythonexec,
                        '../prepython.py',
                        '-in='+matchObject.group(1),
                        '-out=temp/'+pyoutfile,
                        '-publish=false'],False)
       if precode == 0:
-        graphcode = NCall([pythonexec,'temp/'+pyoutfile],False)
+        graphcode = n_call([pythonexec,'temp/'+pyoutfile],False)
       else:
         d_print("prepython failed for "+matchObject.group(1))
         return None
@@ -99,7 +99,7 @@ def show_graph(markup):
         return None
       shutil.copy('temp/tempout.png',relPath+pngoutfile)
     if not os.path.exists(relPath+pyoutfile):
-      precode = NCall([pythonexec,
+      precode = n_call([pythonexec,
                        '../prepython.py',
                        '-in='+matchObject.group(1),
                        '-out=temp/'+pyoutfile,
