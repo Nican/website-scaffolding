@@ -59,7 +59,7 @@ def convert_pass(fn,markup):
     return markup
   return None
 
-def NCall(callList,shellOnWin):
+def n_call(callList,shellOnWin):
   fnull = open(os.devnull, 'w')
   if shellOnWin and os.name == "nt":
     code = call(callList,stdout=fnull,stderr=fnull,shell=True)
