@@ -137,7 +137,6 @@ if __name__ == '__main__':
   webPath = get_arg(sys.argv,4,'../../system/files/')
   tempdir = get_arg(sys.argv,5,'temp/')
 
-  print "outfile is " + outFile
   d_print("Equation Tag Pass")
   stuff = convert_pass(equation_tag,get_file_contents(inFile))
   d_print("ShowGraph Tag Pass")
