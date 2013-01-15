@@ -11,10 +11,10 @@ elif os.name == 'posix':
   else:
     pythonexec = 'python'
 
-def MakeLatexFile(excerpt,tmpfile,color1,color2):
+def make_latex_file(excerpt,tmpfile,color1,color2):
   output_file(GeneratePreamble(color1,color2)+excerpt+GenerateEnding(),tmpfile)
 
-def CallLatex(tmpfile,filename,excerpt):
+def call_latex(tmpfile,filename,excerpt):
   latexcode = NCall(["latex", "-interaction=batchmode", tmpfile],False)
   if latexcode != 0:
     output_file(excerpt + '\n\n' + GetFileContents(tmpfile+".log"),
@@ -25,7 +25,7 @@ def CallLatex(tmpfile,filename,excerpt):
     print excerpt
   return latexcode
 
-def CallConvert(dvipscode, tmpdir,tmpfile,color1,resolution):
+def call_convert(dvipscode, tmpdir,tmpfile,color1,resolution):
   if dvipscode == 0:
     return NCall(["convert",
                   "-antialias",
@@ -36,7 +36,7 @@ def CallConvert(dvipscode, tmpdir,tmpfile,color1,resolution):
   else:
     return 1
 
-def CallDVIPS(latexcode,tmpdir,tmpfile):
+def call_dvips(latexcode,tmpdir,tmpfile):
   if latexcode == 0:
     shutil.copy(tmpfile+".dvi",tmpdir+tmpfile+".dvi")
     dvipscode = NCall(["dvips", "-E", tmpdir+tmpfile+".dvi"],False)
@@ -50,17 +50,17 @@ def CallDVIPS(latexcode,tmpdir,tmpfile):
   else:
     return 1
 
-def MakePNG(excerpt,resolution):
+def make_png(excerpt,resolution):
   # This function borrows heavily from tex2im Version 1.8
   # at http://www.nought.de/tex2im.html .
   filename = MakeFileName(excerpt+resolution)
   tempfile = 'out'
   color1='white'
   color2='black'
-  MakeLatexFile(excerpt,tempfile+".tex",color1,color2)
-  latexcode = CallLatex(tempfile,filename,excerpt)
-  dvipscode = CallDVIPS(latexcode,tempdir,tempfile)
-  convertcode = CallConvert(dvipscode, tempdir,tempfile,color1,resolution)
+  make_latex_file(excerpt,tempfile+".tex",color1,color2)
+  latexcode = call_latex(tempfile,filename,excerpt)
+  dvipscode = call_dvips(latexcode,tempdir,tempfile)
+  convertcode = call_convert(dvipscode, tempdir,tempfile,color1,resolution)
   if convertcode == 0:
     shutil.copy(tempdir+tempfile+".png",relPath+filename+".png")
   else:
@@ -116,7 +116,7 @@ def equation_tag(markup):
   if matchObject != None:
     res = GetResolution(matchObject.group(1))
     if not FileExists(matchObject.group(2),res,relPath):
-      fileName = MakePNG(matchObject.group(2),res)
+      fileName = make_png(matchObject.group(2),res)
       if fileName == None:
         d_print("broken")
         return None
