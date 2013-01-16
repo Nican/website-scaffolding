@@ -67,6 +67,13 @@ def make_png(excerpt,resolution):
     return None
   return filename
 
+##
+# Checks the markup for a splice tag, and replaces the tag with a code snippet
+# div using a style meant for code snippets. Does it once and then stops.
+# Repeat using convert_pass to do it to the whole document.
+#
+# @param markup The markup to check for a splice tag.
+# @return The revised markup.
 def splice_tag(markup):
   thePattern = '<splice src="(.*?)" />'
   matchObject = re.search(thePattern,markup,re.DOTALL)
@@ -77,6 +84,14 @@ def splice_tag(markup):
                   markup,1,re.DOTALL)
   return markup
 
+##
+# Checks the markup for a showgraph tag, runs prepython on it, runs the script,
+# and replaces the showgraph tag with an img tag with the correct png.  Does
+# it once and then stops.  Repeat using convert_pass to do it to the whole
+# document.
+#
+# @param markup The markup to check for a showgraph tag.
+# @return The revised markup.
 def show_graph(markup):
   thePattern = '<showgraph src="(.*?)" />'
   matchObject = re.search(thePattern,markup,re.DOTALL)
@@ -115,7 +130,7 @@ def show_graph(markup):
 # with an img tag with the correct png.  Does it once and then stops.  Repeat
 # using convert_pass to do it to the whole document.
 #
-# @param markup The markup to check for markup tags.
+# @param markup The markup to check for a markup tag.
 # @return The revised markup.
 def equation_tag(markup):
   thePattern = '<equation(.*?)>(.*?)</equation>'
