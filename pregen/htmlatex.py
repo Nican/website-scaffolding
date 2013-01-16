@@ -110,6 +110,13 @@ def show_graph(markup):
                     '</a>',markup,1,re.DOTALL)
   return markup
 
+##
+# Checks the markup for an equation tag, runs LaTeX on it, and replaces it
+# with an img tag with the correct png.  Does it once and then stops.  Repeat
+# using convert_pass to do it to the whole document.
+#
+# @param markup The markup to check for markup tags.
+# @return The revised markup.
 def equation_tag(markup):
   thePattern = '<equation(.*?)>(.*?)</equation>'
   matchObject = re.search(thePattern,markup,re.DOTALL)
