@@ -36,6 +36,14 @@ def call_convert(dvipscode, tmpdir,tmpfile,color1,resolution):
   else:
     return 1
 
+##
+# Intermediate step of LaTeX PNG conversion.  Converts the DVI file to an EPS
+# file so it can be converted to PNG in the next step.
+#
+# @param latexcode The return code of the latex command.  Should be 0 to work.
+# @param tmpdir The temp directory to put the intermediate files.
+# @param tmpfile The name of the ps and eps files to generate.
+# @return The return code of the dvips command or 1 if latexcode is not 0.
 def call_dvips(latexcode,tmpdir,tmpfile):
   if latexcode == 0:
     shutil.copy(tmpfile+".dvi",tmpdir+tmpfile+".dvi")
