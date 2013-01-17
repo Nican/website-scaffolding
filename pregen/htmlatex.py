@@ -50,6 +50,14 @@ def call_dvips(latexcode,tmpdir,tmpfile):
   else:
     return 1
 
+##
+# Creates a PNG file out of the LaTeX excerpt that comes in, and with the
+# resolution specified in resolution.  If blank, it uses the default resolution
+# in get_resolution().
+#
+# @param excerpt The LaTeX code to turn to PNG.
+# @param resolution A string defining the resolution to use.
+# @return The filename to a new PNG file containing the typeset equation.
 def make_png(excerpt,resolution):
   # This function borrows heavily from tex2im Version 1.8
   # at http://www.nought.de/tex2im.html .
