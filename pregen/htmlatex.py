@@ -25,6 +25,15 @@ def call_latex(tmpfile,filename,excerpt):
     print excerpt
   return latexcode
 
+##
+# Final step of LaTeX PNG conversion.  Converts the EPS file to a PNG.
+#
+# @param dvipscode The return code of the dvips command.  Should be 0 to work.
+# @param tmpdir The temp directory to put the intermediate files.
+# @param tmpfile The name of the ps and eps files to generate.
+# @param color1 The transparency color to pass to convert.
+# @param resolution The resolution to render the EPS at.
+# @return The return code of the convert command or 1 if latexcode is not 0.
 def call_convert(dvipscode, tmpdir,tmpfile,color1,resolution):
   if dvipscode == 0:
     return n_call(["convert",
