@@ -14,6 +14,13 @@ elif os.name == 'posix':
 def make_latex_file(excerpt,tmpfile,color1,color2):
   output_file(generate_preamble(color1,color2)+excerpt+generate_ending(),tmpfile)
 
+##
+# First step of LaTeX PNG conversion.  Runs latex to get a DVI file.
+#
+# @param tmpfile The name of the DVI file to generate.
+# @param filename The auto-generated filename to use (usually a hash).
+# @param excerpt The raw LaTeX code to parse.
+# @return The return code of the latex command.
 def call_latex(tmpfile,filename,excerpt):
   latexcode = n_call(["latex", "-interaction=batchmode", tmpfile],False)
   if latexcode != 0:
