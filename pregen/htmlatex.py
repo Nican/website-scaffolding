@@ -11,8 +11,15 @@ elif os.name == 'posix':
   else:
     pythonexec = 'python'
 
-def make_latex_file(excerpt,tmpfile,color1,color2):
-  output_file(generate_preamble(color1,color2)+excerpt+generate_ending(),tmpfile)
+##
+# Generates a LaTeX file from a snippet of code.
+#
+# @param latex The LaTeX code.
+# @param tmpfile Name of the temporary file to output.
+# @param color1 The main font color.
+# @param color2 The background font color.
+def make_latex_file(latex,tmpfile,color1,color2):
+  output_file(generate_preamble(color1,color2)+latex+generate_ending(),tmpfile)
 
 ##
 # First step of LaTeX PNG conversion.  Runs latex to get a DVI file.
