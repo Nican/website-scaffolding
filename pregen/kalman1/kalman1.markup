@@ -30,6 +30,7 @@ description: Linear Kalman Filter tutorial.
 <p>This guide aims to quickly get you 80% of the way toward understanding Kalman filters. I won't cover the remaining 20% since that's not the point of this guide. If you need to know Kalman filters to that depth, find a more detailed guide.</p>
 <p>&nbsp;</p>
 <h2>When Can Kalman Filters Help?</h2>
+<br />
 <p>Kalman filters can help when four conditions are true:</p>
 <ol>
 <li>You can get measurements of a situation at a constant rate.</li>
@@ -37,9 +38,11 @@ description: Linear Kalman Filter tutorial.
 <li>You know the mathematics behind the situation.</li>
 <li>You want an estimate of what's really happening.</li>
 </ol>
+<br />
 <p>There are exceptions, but I'll let other publications explain them.</p>
 <p>&nbsp;</p>
 <h2>Linear Kalman Filters</h2>
+<br />
 <h3>Prerequisites</h3>
 <p>To understand these linear Kalman filter examples, you will need a basic understanding of:</p>
 <ul>
@@ -47,6 +50,7 @@ description: Linear Kalman Filter tutorial.
 <li>Matrix algebra</li>
 <li>Python for the programming parts.</li>
 </ul>
+<br />
 <h3>Basics</h3>
 <p>Here are the most important concepts you need to know:</p>
 <ul>
@@ -73,6 +77,7 @@ description: Linear Kalman Filter tutorial.
 <li>The most current estimate of the true state of the system.</li>
 <li>The most current estimate of the overall error of the system. </li>
 </ul>
+<br />
 <h3>The Equations</h3>
 <p><strong>NOTE: The equations are here for exposition and reference. You aren't expected to understand the equations on the first read.</strong></p>
 <p>The Kalman Filter is like a function in a programming language: it's a process of sequential equations with inputs, constants, and outputs. Here I've color-coded the filter equations to illustrate which parts are which. If you are using the Kalman Filter like a black box, you can ignore the gray intermediary variables.<strong>&nbsp;<br /></strong></p>

@@ -179,11 +179,11 @@ def equation_tag(markup):
     if not file_exists(matchObject.group(2),res,relPath):
       fileName = make_png(matchObject.group(2),res)
       if fileName == None:
-        d_print("broken")
+        #d_print("broken")
         return None
       else:
         fileName = fileName+".png"
-        d_print("wrote " + fileName)
+        #d_print("wrote " + fileName)
     else:
       fileName = make_file_name(matchObject.group(2)+res)+".png"
     markup = re.sub(thePattern,

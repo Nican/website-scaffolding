@@ -64,7 +64,7 @@ def n_call(callList,shellOnWin):
   if shellOnWin and os.name == "nt":
     code = call(callList,stdout=fnull,stderr=fnull,shell=True)
   else:
-    code = call(callList,stdout=fnull)
+    code = call(callList,stdout=fnull,stderr=fnull)
   fnull.close()
   if len(callList) > 0:
     d_print_return_code(callList[0],code)
