@@ -4,13 +4,14 @@ default_block: main
 title: Greg Czerniak's Website - Kalman Filters for Undergrads 1
 description: Linear Kalman Filter tutorial.
 ---
-<b>NOTE: This guide is currently a work in progress.</b>
-<!--[toc]-->
+<p><b>NOTE: This guide is currently a work in progress.</b></p>
+<br />
 <h2>Introduction</h2>
+<br />
 <p>Kalman filters let you use mathematical models despite having error-filled real-time measurements. Programmers dealing with real-world data should know them. Publications explaining Kalman filters are hard for Computer Scientists/Engineers to understand since they expect you to know control theory. I wrote this guide for people who want to learn Kalman filters but never took a control theory course.</p>
-<p>&nbsp;</p>
+<br />
 <p><strong>DISCLAIMER: This guide teaches amateur-level Kalman filtering for hobbyists. If lives depend on your Kalman  filter (such as manned aviation, ICBMs, medical instruments, etc), do not rely on this guide! I skip a lot of details necessary for serious use!</strong></p>
-<p>&nbsp;</p>
+<br />
 <p><span style="text-decoration: underline;">This guide will cover</span>:</p>
 <ul>
 <li>When Kalman filters can help.</li>
@@ -18,6 +19,7 @@ description: Linear Kalman Filter tutorial.
 <li>Examples of how to convert normal-looking equations into Kalman filter matrices.</li>
 <li>Example code implementing Kalman filters in Python.</li>
 </ul>
+<br />
 <p><span style="text-decoration: underline;">This guide WON'T cover</span>:</p>
 <ul>
 <li>Kalman filter history. Please consult the University of North Carolina at Chapel Hill's <a href="http://www.cs.unc.edu/~welch/kalman/">great website</a> for information on this subject.</li>
