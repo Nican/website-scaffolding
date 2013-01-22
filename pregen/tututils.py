@@ -32,6 +32,11 @@ def nbspize(theIn):
       res += l + '\n'
   return res
 
+##
+# A template print statement for executables that return error codes.
+#
+# @param executable The name of the executable.
+# @param code The error code.
 def d_print_return_code(executable,code):
   if code != 0:
     d_print(executable + " return code: " + str(code))
