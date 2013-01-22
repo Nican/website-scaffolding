@@ -6,6 +6,12 @@ import hashlib
 debugmode = True
 from subprocess import call
 
+##
+# Replaces special characters in a string of unformatted text to HTML special
+# character codes.
+#
+# @param theIn Unformatted source code.
+# @return HTML code with special characters properly used.
 def nbspize(theIn):
   thePattern = '([ ]+?) (\S)'
   lines = theIn.split('\n')
