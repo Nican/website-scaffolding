@@ -308,6 +308,9 @@ article.post img{
     margin-top: 6px;
 }
 
+ul, ol {
+    margin: 1.5em;
+}
 ul.tags{
     margin-bottom: 24px;
     text-align: right;

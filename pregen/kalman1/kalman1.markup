@@ -60,6 +60,7 @@ description: Linear Kalman Filter tutorial.
 <li>The more you understand the mathematical model of your situation, the more accurate the Kalman filter's results will be.</li>
 <li>If your model is completely consistent with what's actually happening, the Kalman filter's estimate will eventually converge with what's actually happening. </li>
 </ul>
+<br />
 <p>When you start up a Kalman Filter, these are the things it expects:</p>
 <ul>
 <li>The mathematical model of the system, represented by matrices A, B, and H.</li>
