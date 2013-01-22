@@ -41,6 +41,11 @@ def d_print_return_code(executable,code):
   if code != 0:
     d_print(executable + " return code: " + str(code))
 
+##
+# Given a filename, returns the entire contents in a string.
+#
+# @param filename The file name.
+# @return The contents of the file as a string.
 def get_file_contents(filename):
   fp = open(filename,'r')
   theMarkup = fp.read()
