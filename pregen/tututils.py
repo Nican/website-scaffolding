@@ -52,6 +52,10 @@ def get_file_contents(filename):
   fp.close()
   return theMarkup
 
+##
+# Template print function that only prints when debug mode is on.
+#
+# @param string The string to print if debugmode is on.
 def d_print(string):
   if debugmode:
     print string
