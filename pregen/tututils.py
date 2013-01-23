@@ -60,6 +60,10 @@ def d_print(string):
   if debugmode:
     print string
 
+##
+# Tries to delete a file and prints an error in the console if it fails.
+#
+# @param filename The name of the file to delete.
 def remove_if_possible(filename):
   try:
     os.remove(filename)
