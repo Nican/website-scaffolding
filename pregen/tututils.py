@@ -70,6 +70,13 @@ def remove_if_possible(filename):
   except Exception, err:
     print "couldn't remove " + filename + " due to error " + str(err)
 
+##
+# This function repeatedly calls fn() on markup until it either gets NoneType
+# or the same output as input.
+#
+# @param fn The function to call on markup repeatedly.
+# @param markup The markup to run fn() on.
+# @return The revised markup after calling fn() on it repeatedly, or NoneType.
 def convert_pass(fn,markup):
   if markup != None:
     done = False
