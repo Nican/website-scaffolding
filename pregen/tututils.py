@@ -121,6 +121,10 @@ def output_file(contents,filename):
   else:
     d_print("contents are null for OutputFile")
 
+##
+# Given a list of filenames, call remove_if_possible() on all of them.
+#
+# @param fileList A list containing filenames to remove.
 def remove_all_if_possible(fileList):
   for fileName in fileList:
     remove_if_possible(fileName)
