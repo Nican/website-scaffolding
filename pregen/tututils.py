@@ -129,6 +129,14 @@ def remove_all_if_possible(fileList):
   for fileName in fileList:
     remove_if_possible(fileName)
 
+##
+# Given a LaTeX excerpt+resolution, returns True if it has already been
+# generated, False if not.
+#
+# @param excerpt The raw LaTeX code.
+# @param resolution The resolution.
+# @param mediaDir The directory storing the image/media files.
+# @return True if the file exists, false if the file does not.
 def file_exists(excerpt,resolution,mediaDir):
   filename = make_file_name(excerpt+resolution)
   check = slash_at_end(mediaDir)+filename+".png"
