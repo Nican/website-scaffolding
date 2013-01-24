@@ -108,6 +108,11 @@ def n_call(callList,shellOnWin):
     d_print_return_code(callList[0],code)
   return code
 
+##
+# Write a string of stuff to a given file.  Overwrites existing content.
+#
+# @param contents The stuff to write to the file.
+# @param filename The filename.
 def output_file(contents,filename):
   if contents != None:
     fp = open(filename,"wt")
