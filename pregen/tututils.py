@@ -144,6 +144,11 @@ def file_exists(excerpt,resolution,mediaDir):
     return True
   return False
 
+##
+# Given a string, generate a file name that does not change based on content.
+#
+# @param excerpt The string.
+# @return The file name based on the string.
 def make_file_name(excerpt):
   theHash = hashlib.sha256()
   theHash.update(excerpt)
