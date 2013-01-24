@@ -90,6 +90,13 @@ def convert_pass(fn,markup):
     return markup
   return None
 
+##
+# Execute the command enumerated in callList.  Set shellOnWin to true if you're
+# using a Windows Command Prompt.
+#
+# @param callList A list with the shell command name followed by all params.
+# @param shellOnWin True if you're using Windows Command Prompt.
+# @return The return code of the program.
 def n_call(callList,shellOnWin):
   fnull = open(os.devnull, 'w')
   if shellOnWin and os.name == "nt":
