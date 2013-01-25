@@ -204,6 +204,11 @@ def num_non_blanks(theList):
       count += 1
   return count
 
+##
+# Ensures there's a slash at the end of theString.
+#
+# @param theString The string to ensure has a slash at the end.
+# @return theString with a slash at the end (if it didn't already).
 def slash_at_end(theString):
   if theString[-1] == '/':
     return theString
