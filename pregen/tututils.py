@@ -197,6 +197,11 @@ def generate_preamble(color1,color2):
 def generate_ending():
   return '\\end{document}'
 
+##
+# Return the number of non-blank entries in a list of strings.
+#
+# @param theList
+# @return The number of non-blank entries in theList.
 def num_non_blanks(theList):
   count = 0
   for i in theList:
