@@ -3,7 +3,7 @@ import sys
 import os
 import string
 import hashlib
-debugmode = True
+debugmode = False
 from subprocess import call
 
 ##
