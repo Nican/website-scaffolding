@@ -193,7 +193,11 @@ def generate_preamble(color1,color2):
   preamble += '{\\color{'+color2+'}\n'
   return preamble
 
-# Unit tested
+##
+# Returns the ending of a LaTeX document.  This is in case we ever want to
+# have multiple output formats. (Unit tested)
+#
+# @return The end of a LaTeX document.
 def generate_ending():
   return '\\end{document}'
 
