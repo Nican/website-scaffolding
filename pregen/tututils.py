@@ -182,7 +182,13 @@ def unsuffix(filename,suffix):
   ind = string.rfind(filename,'.'+suffix)
   return filename[:ind]
 
-# Unit tested
+##
+# Returns the preamble of a LaTeX document as a string.  This is in case we
+# ever want to have multiple output formats. (Unit tested)
+#
+# @param color1 Foreground color (string)
+# @param color2 Background color (string)
+# @return String containing LaTeX preamble.
 def generate_preamble(color1,color2):
   preamble  = '\\documentclass[12pt]{article}\n'
   preamble += '\\usepackage{color}\n'
