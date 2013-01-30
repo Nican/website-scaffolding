@@ -169,7 +169,12 @@ def get_arg(argv,num,defaultArg):
     return argv[num]
   return defaultArg
 
-# Unit tested
+##
+# Given a string of HTML arguments, pull out the resolution string.
+# (Unit tested)
+#
+# @param argstring A string of arguments.
+# @return Resolution string.
 def get_resolution(argstring):
   resPattern = 'resolution="(.*?)"'
   matchObj = re.search(resPattern,argstring,re.DOTALL)
