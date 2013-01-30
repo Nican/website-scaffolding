@@ -177,7 +177,12 @@ def get_resolution(argstring):
     return matchObj.group(1)
   return '250x250'
 
-# Unit tested
+##
+# Removes the suffix from a filename. (Unit tested)
+#
+# @param filename The file name.
+# @param suffix The suffix to remove.
+# @return The file name without the suffix.
 def unsuffix(filename,suffix):
   ind = string.rfind(filename,'.'+suffix)
   return filename[:ind]
