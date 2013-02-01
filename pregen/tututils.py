@@ -163,7 +163,14 @@ def get_named_arg(argv,argname,defaultArg):
       return matchObj.group(2)
   return defaultArg
 
-# Unit tested
+##
+# Gets an arg from an argv array, or returns defaultArg if it's not there.
+# (Unit tested)
+#
+# @param argv The argv from the operating system.
+# @param num The arg number.
+# @param defaultArg What the arg should be if it's not there.
+# @return The arg if it's there, and defaultArg if it's not.
 def get_arg(argv,num,defaultArg):
   if len(argv) >= num+1:
     return argv[num]
