@@ -154,7 +154,14 @@ def make_file_name(excerpt):
   theHash.update(excerpt)
   return theHash.hexdigest()
 
-# Unit tested
+##
+# Given an argument name (herp in -herp=derp), find the argument value or
+# give back defaultArg. (Unit tested)
+#
+# @param argv The set of arguments from the OS.
+# @param argname The argument name to look for.
+# @param defaultArg The default argument value if it's not found.
+# @return The argument value it finds for argname or defaultArg.
 def get_named_arg(argv,argname,defaultArg):
   argPattern = '-(.*?)=(.*)'
   for i in argv:
