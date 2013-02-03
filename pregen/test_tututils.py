@@ -34,20 +34,28 @@ class TutUtilTests(unittest.TestCase):
       result = get_arg(*key[0])
       self.assertEqual(result,key[1])
 
+  ##
+  # Tests the unsuffix() function.
   def test_unsuffix(self):
     self.assertEqual(unsuffix('derp.markup','markup'),'derp')
     self.assertEqual(unsuffix('derp.png','png'),'derp')
     self.assertEqual(unsuffix('derp.anything',''),'derp')
     self.assertEqual(unsuffix('derp.anything.herp',''),'derp.anything')
 
+  ##
+  # Tests the get_resolution() function.
   def test_get_resolution(self):
     result = get_resolution('resolution="derp"')
     self.assertEqual(result,'derp')
 
+  ##
+  # Tests the generate_preamble() function.
   def test_generate_preamble(self):
     result = generate_preamble('herp','derp')
     self.assertEqual(result,'\\documentclass[12pt]{article}\n\\usepackage{color}\n\\usepackage[dvips]{graphicx}\n\\pagestyle{empty}\n\\pagecolor{herp}\n\\begin{document}\n{\\color{derp}\n')
 
+  ##
+  # Tests the generage_ending() function.
   def test_generate_ending(self):
     self.assertEqual(generate_ending(),'\\end{document}')
 
