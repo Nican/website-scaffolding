@@ -5,14 +5,15 @@ class TutUtilTests(unittest.TestCase):
   def setUp(self):
     pass
 
-  #def test_oneEqualsOne(self):
-  #  self.assertEqual(1,2)
-
+  ##
+  # Tests the nbspize() function.
   def test_nbspize(self):
     inStuff = 'class Voltmeter:\n    def __init__(self,_truevoltage,_noiselevel):\n        self.truevoltage = _truevoltage\n        self.noiselevel = _noiselevel\n    def GetVoltage(self):\n        return self.truevoltage\n    def GetVoltageWithNoise(self):\n        return random.gauss(self.GetVoltage(),self.noiselevel)'
     outStuff = 'class Voltmeter:\n&nbsp;&nbsp;&nbsp; def __init__(self,_truevoltage,_noiselevel):\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; self.truevoltage = _truevoltage\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; self.noiselevel = _noiselevel\n&nbsp;&nbsp;&nbsp; def GetVoltage(self):\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return self.truevoltage\n&nbsp;&nbsp;&nbsp; def GetVoltageWithNoise(self):\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return random.gauss(self.GetVoltage(),self.noiselevel)\n'
     self.assertEqual(nbspize(inStuff),outStuff)
 
+  ##
+  # Tests the get_named_arg() function.
   def test_get_named_arg(self):
     answerpairs = [((['htmlatex','-dir=herp','-snub=derp'],'dir','snerp'),'herp'),
                    ((['htmlatex','-dir=herp','-snub=derp'],'snub','snerp'),'derp'),
@@ -21,6 +22,8 @@ class TutUtilTests(unittest.TestCase):
       result = get_named_arg(*key[0])
       self.assertEqual(result,key[1])
 
+  ##
+  # Tests the get_arg() function.
   def test_get_arg(self):
     answerpairs = [((['htmlatex','herp','derp'],1,'snerp'),'herp'),
                    ((['htmlatex'],1,'snerp'),'snerp'),
