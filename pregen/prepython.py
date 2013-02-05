@@ -6,6 +6,13 @@ import codecs
 from tututils import *
 from subprocess import call
 
+##
+# Given markup, look for a PPY_showstuff command and replace it with the
+# correct Python code to display a graph.  Meant to be used with
+# convert_pass().
+#
+# @param markup The python code to look in.
+# @return The python code with a single PPY_showstuff call handled.
 def show_stuff(markup):
   thePattern = '\nPPY_showstuff (.*?)\Z'
   matchObject = re.search(thePattern,markup,re.DOTALL)
@@ -18,8 +25,8 @@ def show_stuff(markup):
   return markup
 
 ##
-# Given a "PPY_splice" command in the code, splice in the given file instead.
-# Meant to be used with convert_pass.
+# Given a "PPY_splice" command in the code, splice in the given file
+# instead. Meant to be used with convert_pass.
 #
 # @param markup A string containing the Python code with gregstensions.
 # @return A string with the Python code + one (and only one) splice done.
