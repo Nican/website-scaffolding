@@ -17,6 +17,12 @@ def show_stuff(markup):
       return re.sub(thePattern,"\n"+prefix+".savefig('temp/tempout.png')",markup,1,re.DOTALL)
   return markup
 
+##
+# Given a "PPY_splice" command in the code, splice in the given file instead.
+# Meant to be used with convert_pass.
+#
+# @param markup A string containing the Python code with gregstensions.
+# @return A string with the Python code + one (and only one) splice done.
 def splice(markup):
   thePattern = 'PPY_splice "(.*?)"\n'
   matchObject = re.search(thePattern,markup,re.DOTALL)
