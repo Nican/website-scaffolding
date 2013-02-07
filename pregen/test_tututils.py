@@ -1,6 +1,9 @@
 import unittest
 from tututils import *
 
+##
+# A test class for tututils, which is an aggregation of functions for putting
+# together my tutorials.
 class TutUtilTests(unittest.TestCase):
   def setUp(self):
     pass
