@@ -19,7 +19,6 @@ description: Linear Kalman Filter tutorial.
 <li>Examples of how to convert normal-looking equations into Kalman filter matrices.</li>
 <li>Example code implementing Kalman filters in Python.</li>
 </ul>
-<br />
 <p><span style="text-decoration: underline;">This guide WON'T cover</span>:</p>
 <ul>
 <li>Kalman filter history. Please consult the University of North Carolina at Chapel Hill's <a href="http://www.cs.unc.edu/~welch/kalman/">great website</a> for information on this subject.</li>
@@ -38,7 +37,6 @@ description: Linear Kalman Filter tutorial.
 <li>You know the mathematics behind the situation.</li>
 <li>You want an estimate of what's really happening.</li>
 </ol>
-<br />
 <p>There are exceptions, but I'll let other publications explain them.</p>
 <p>&nbsp;</p>
 <h2>Linear Kalman Filters</h2>
@@ -50,7 +48,6 @@ description: Linear Kalman Filter tutorial.
 <li>Matrix algebra</li>
 <li>Python for the programming parts.</li>
 </ul>
-<br />
 <h3>Basics</h3>
 <p>Here are the most important concepts you need to know:</p>
 <ul>
@@ -60,7 +57,6 @@ description: Linear Kalman Filter tutorial.
 <li>The more you understand the mathematical model of your situation, the more accurate the Kalman filter's results will be.</li>
 <li>If your model is completely consistent with what's actually happening, the Kalman filter's estimate will eventually converge with what's actually happening. </li>
 </ul>
-<br />
 <p>When you start up a Kalman Filter, these are the things it expects:</p>
 <ul>
 <li>The mathematical model of the system, represented by matrices A, B, and H.</li>
@@ -78,7 +74,6 @@ description: Linear Kalman Filter tutorial.
 <li>The most current estimate of the true state of the system.</li>
 <li>The most current estimate of the overall error of the system. </li>
 </ul>
-<br />
 <h3>The Equations</h3>
 <p><strong>NOTE: The equations are here for exposition and reference. You aren't expected to understand the equations on the first read.</strong></p>
 <p>The Kalman Filter is like a function in a programming language: it's a process of sequential equations with inputs, constants, and outputs. Here I've color-coded the filter equations to illustrate which parts are which. If you are using the Kalman Filter like a black box, you can ignore the gray intermediary variables.<strong>&nbsp;<br /></strong></p>
@@ -199,6 +194,7 @@ description: Linear Kalman Filter tutorial.
 <splice src="KalmanFilterLinear.py" />
 <p>&nbsp;</p>
 <h2>Single-Variable Example</h2>
+<br />
 <h3>Situation</h3>
 <p>This is a <a href="http://www.cs.unc.edu/~welch/kalman/kalmanIntro.html">classic</a> <a href="http://prism2.mem.drexel.edu/~billgreen/slam/papers/kalmanIntro.pdf">example</a>. We will attempt to measure a constant DC voltage with a noisy voltmeter. We will use the Kalman filter to filter out the noise and converge toward the true value.</p>
 <p>&nbsp;</p>
@@ -218,6 +214,7 @@ V_{n} = V_{n-1} + w_{n}
 <p>In Python, we simulate this situation with the following object:</p>
 <p>&nbsp;</p>
 <splice src="Voltmeter.py" />
+<br />
 <h3>Preparation</h3>
 <p>The next step is to prepare the Kalman filter inputs and constants. Since this is a single-variable example, all matrices are 1x1.</p>
 <p>&nbsp;</p>
@@ -250,6 +247,7 @@ V_{n} = V_{n-1} \rightarrow A = \left[ \begin{array}{c}
 <p>For brevity, I don't list all the code in this guide. The complete file is available: <a href="kalman1/kalman1.py.txt">kalman1.py</a> . I highly recommend you read through it and play with the starting values.</p>
 <p>&nbsp;</p>
 <h2>Multi-Variable Example</h2>
+<br />
 <h3>Situation</h3>
 <p>We will use a common physics problem with a twist. This example will involve firing a ball from a cannon at at 45-degree angle at a muzzle velocity of 100 units/sec. However, we will also have a camera that will record the ball's position from the side every second. The positions measured from the camera have significant measurement error. We also have precise detectors in the ball that give the X and Y velocity every second.</p>
 <p><img src="kalman1/cannon.png" alt="" /></p>
@@ -448,9 +446,11 @@ R = \left[ \begin{array}{llll}
 <p>The complete code for this example is available at: <a href="kalman1/kalman2.py.txt">kalman2.py</a></p>
 <p>&nbsp;</p>
 <h2>Conclusion</h2>
+<br />
 <p>I hope that this guide was useful to you. This is a living document. If you have any suggestions, comments, etc, please send me a message at greg {at] czerniak (dot} info so I can make this guide even better. ESPECIALLY send me a message if you got confused somewhere -- you're probably not the first or last person that will get hung up at that point.</p>
 <p>&nbsp;</p>
 <h2>References</h2>
+<br />
 <p><span style="text-decoration: underline;">Kalman Filters</span></p>
 <ul>
 <li><span style="font-family: Arial;"><a href="http://www.cs.unc.edu/~welch/kalman/">The Kalman Filter</a>: A great launching point for information about the Kalman filter.<br /></span></li>
