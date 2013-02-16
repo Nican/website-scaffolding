@@ -1,0 +1,11 @@
+---
+extends: base.j2
+default_block: main
+title: Greg Czerniak's Website - Kalman Filters for Undergrads 2
+description: Non-linear Kalman Filter tutorial.
+---
+<p><b>NOTE: This guide is currently a work in progress.</b></p>
+<br />
+<h2>Introduction</h2>
+<br />
+<p>In this second article, we will use Kalman filters for non-linear situations.</p>
