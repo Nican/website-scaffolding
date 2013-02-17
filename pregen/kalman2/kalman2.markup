@@ -9,6 +9,11 @@ description: Non-linear Kalman Filter tutorial.
 <h2>Introduction</h2>
 <br />
 <p>In this second article, we will use Kalman filters for non-linear situations.</p>
+<p><u>This guide will cover:</u></p>
+<ul>
+<li>How to filter noise in non-linear models with Kalman filters.</li>
+<li>Example code implementing non-linear Kalman filters in Python.</li>
+</ul>
 <h2>Why and How?</h2>
 <h2>Non-Linear (Extended) Kalman Filters</h2>
 <h2>Single-Variable Example</h2>
