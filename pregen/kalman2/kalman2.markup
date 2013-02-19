@@ -18,6 +18,12 @@ description: Non-linear Kalman Filter tutorial.
 Kalman filters, as mentioned in Kalman Filters for Undergrads 1, are linear.  In the canonical form Kalman filters can solve elementary physics problems like cannonballs in flight.  However, useful real-world problems are seldom linear.
 
 How do we take a linear Kalman filter and use it for non-linear problems?  Effectively, we use the equivalent of a first-order Taylor expansion -- we linearize around our best guess of the state and then use the linear Kalman filter with our approximation.
+
+Linear Kalman filters are provably optimal.  However, non-linear (extended) Kalman filters are not.  Since the non-linear problem is put through a set of linear approximations, it will diverge from the actual problem similar to a polygonal approximation of a differential equation using Euler's method.
+
+(needs a picture)
+
+Despite this lack of optimality, non-linear (extended) Kalman filters are useful for making estimations using real world data.
 <h2>Non-Linear (Extended) Kalman Filters</h2>
 <h2>Single-Variable Example</h2>
 <h2>Multiple-Variable Example</h2>
