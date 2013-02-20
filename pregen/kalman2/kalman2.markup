@@ -19,13 +19,21 @@ Kalman filters, as mentioned in Kalman Filters for Undergrads 1, are linear.  In
 
 How do we take a linear Kalman filter and use it for non-linear problems?  Effectively, we use the equivalent of a first-order Taylor expansion -- we linearize around our best guess of the state and then use the linear Kalman filter with our approximation.
 
-Linear Kalman filters are provably optimal.  However, non-linear (extended) Kalman filters are not.  Since the non-linear problem is put through a set of linear approximations, it will diverge from the actual problem similar to a polygonal approximation of a differential equation using Euler's method.
+Linear Kalman filters are provably optimal.  However, non-linear (extended) Kalman filters are not.  Since the non-linear problem is put through a set of linear approximations, it will diverge from the actual problem similar to the divergence of a polygonal approximation of a differential equation using Euler's method.
 
 (needs a picture)
 
 Despite this lack of optimality, non-linear (extended) Kalman filters are useful for making estimations using real world data.
 <h2>Non-Linear (Extended) Kalman Filters</h2>
+
 <h2>Single-Variable Example</h2>
+In the linear tutorial, our single-variable example was a noisy but constant voltage graph (DC).  Similarly, the single-variable example for non-linear Kalman filters will be sinusoidal voltage (AC).
+
+First, let's try using the linear Kalman filter to do this.  I'm not going to explain the parameters in-depth here (look at the linear tutorial for that), but here's a graph of what happens:
+
+(graph)
+
+Our objective is to do better than this.
 <h2>Multiple-Variable Example</h2>
 <h2>Conclusion</h2>
 <h2>References</h2>
