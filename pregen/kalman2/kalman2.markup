@@ -15,32 +15,35 @@ description: Non-linear Kalman Filter tutorial.
 <li>Example code implementing non-linear Kalman filters in Python.</li>
 </ul>
 <h2>Why and How?</h2>
-Kalman filters, as mentioned in Kalman Filters for Undergrads 1, are linear.  In the canonical form Kalman filters can solve elementary physics problems like cannonballs in flight.  However, useful real-world problems are seldom linear.
-
-How do we take a linear Kalman filter and use it for non-linear problems?  Effectively, we use the equivalent of a first-order Taylor expansion -- we linearize around our best guess of the state and then use the linear Kalman filter with our approximation.
-
-Linear Kalman filters are provably optimal.  However, non-linear (extended) Kalman filters are not.  Since we put the non-linear problem through a set of linear approximations, it will diverge from the actual problem similar to the divergence of a polygonal approximation of a differential equation using Euler's method.
-
-(needs a picture)
-
-Despite this lack of optimality, non-linear (extended) Kalman filters are useful for making estimations using real world data.
+<br />
+<p>Kalman filters, as mentioned in Kalman Filters for Undergrads 1, are linear.  In the canonical form Kalman filters can solve elementary physics problems like cannonballs in flight.  However, useful real-world problems are seldom linear.</p>
+<br />
+<p>How do we take a linear Kalman filter and use it for non-linear problems?  Effectively, we use the equivalent of a first-order Taylor expansion -- we linearize around our best guess of the state and then use the linear Kalman filter with our approximation.</p>
+<br />
+<p>Linear Kalman filters are provably optimal.  However, non-linear (extended) Kalman filters are not.  Since we put the non-linear problem through a set of linear approximations, it will diverge from the actual problem similar to the divergence of a polygonal approximation of a differential equation using Euler's method.</p>
+<br />
+<p>(needs a picture)</p>
+<br />
+<p>Despite this lack of optimality, non-linear (extended) Kalman filters are useful for making estimations using real world data.</p>
+<br />
 <h2>Non-Linear (Extended) Kalman Filters</h2>
 
 <h2>Single-Variable Example</h2>
-In the linear tutorial, our single-variable example was a noisy but constant voltage graph (DC).  Similarly, the single-variable example for non-linear Kalman filters will be sinusoidal voltage (AC).
-
-First, let's define the situation in Python.  We'll create an object that defines the sinusoidal voltage pattern and give it random noise.
-
-(bunch of Python code)
-
-Before using the EKF, let's try using the linear Kalman filter to do this.  I'm not going to explain the parameters in-depth here (look at the linear tutorial for that), but here's a graph of what happens:
-
-(graph)
-
-Our objective is to do better than this.
-
-First, we need to define problem in terms of an Extended Kalman Filter.  To do this, we need to establish the state transition and control functions, as well as the Jacobians that the EKF expects.  Let's begin:
-
+<br />
+<p>In the linear tutorial, our single-variable example was a noisy but constant voltage graph (DC).  Similarly, the single-variable example for non-linear Kalman filters will be sinusoidal voltage (AC).</p>
+<br />
+<p>First, let's define the situation in Python.  We'll create an object that defines the sinusoidal voltage pattern and give it random noise.</p>
+<br />
+<p>(bunch of Python code)</p>
+<br />
+<p>Before using the EKF, let's try using the linear Kalman filter to do this.  I'm not going to explain the parameters in-depth here (look at the linear tutorial for that), but here's a graph of what happens:</p>
+<br />
+<p>(graph)</p>
+<br />
+<p>Our objective is to do better than this with an Extended Kalman Filter.</p>
+<br />
+<p>First, we need to define problem in terms of an Extended Kalman Filter.  To do this, we need to establish the state transition and control functions, as well as the Jacobians that the EKF expects.  Let's begin:</p>
+<br />
 (bunch of math stuff)
 
 Now that we have the relevant matrices and functions that we need, let's plug all this into a Python script.
