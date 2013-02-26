@@ -28,6 +28,41 @@ description: Non-linear Kalman Filter tutorial.
 <br />
 <h2>Non-Linear (Extended) Kalman Filters</h2>
 <br />
+<p>&nbsp;</p>
+<p>WARNING: This section is incomplete and most likely wrong right now!</p>
+<p style="text-align: center;"><span style="color: #0000ff;">BLUE</span> = inputs <span style="color: #ff6600;">ORANGE</span> = outputs BLACK = constants <span style="color: #c0c0c0;">GRAY</span> = intermediary variables</p>
+<table style="width: 100%;" border="1">
+<tbody>
+<tr>
+<td>
+<p>State Prediction</p>
+<p>(Predict where we're gonna be)</p>
+</td>
+<td><equation>
+\begin{displaymath}
+\definecolor{lightgray}{rgb}{0.7,0.7,0.7}
+\definecolor{orange}{rgb}{1.0,0.5,0.0}
+\textcolor{lightgray}{\textbf{x}_{predicted}} = f(\textcolor{lightgray}{\textbf{x}_{n-1}}, \textcolor{blue}{\textbf{u}_{n}})
+\end{displaymath}
+</equation></td>
+</tr>
+</tr>
+</tbody>
+</table>
+<p>&nbsp;</p>
+<!-- <p>Inputs:</p>
+<p>Un = Control vector. This indicates the magnitude of any control system's or user's control on the situation.</p>
+<p>Zn = Measurement vector. This contains the real-world measurement we received in this time step.</p>
+<p>Outputs:</p>
+<p>Xn = Newest estimate of the current "true" state.</p>
+<p>Pn = Newest estimate of the average error for each part of the state.</p>
+<p>Constants:</p>
+<p>A = State transition matrix. Basically, multiply state by this and add control factors, and you get a prediction of the state for the next time step.</p>
+<p>B = Control matrix. This is used to define linear equations for any control factors.</p>
+<p>H = Observation matrix. Multiply a state vector by H to translate it to a measurement vector.</p>
+<p>Q = Estimated process error covariance. Finding precise values for Q and R are beyond the scope of this guide.</p>
+<p>R = Estimated measurement error covariance. Finding precise values for Q and R are beyond the scope of this guide.</p>
+-->
 <h2>Single-Variable Example</h2>
 <br />
 <p>In the linear tutorial, our single-variable example was a noisy but constant voltage graph (DC).  Similarly, the single-variable example for non-linear Kalman filters will be sinusoidal voltage (AC).</p>
@@ -62,3 +97,6 @@ description: Non-linear Kalman Filter tutorial.
 <h2>Multiple-Variable Example</h2>
 <h2>Conclusion</h2>
 <h2>References</h2>
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/Extended_Kalman_filter">Extended Kalman filter</a>: I used Wikipedia's equations for the EKF for color-coding.</li>
+</ul>
