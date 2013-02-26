@@ -27,7 +27,7 @@ description: Non-linear Kalman Filter tutorial.
 <p>Despite this lack of optimality, non-linear (extended) Kalman filters are useful for making estimations using real world data.</p>
 <br />
 <h2>Non-Linear (Extended) Kalman Filters</h2>
-
+<br />
 <h2>Single-Variable Example</h2>
 <br />
 <p>In the linear tutorial, our single-variable example was a noisy but constant voltage graph (DC).  Similarly, the single-variable example for non-linear Kalman filters will be sinusoidal voltage (AC).</p>
