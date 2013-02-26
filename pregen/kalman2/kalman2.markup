@@ -46,6 +46,18 @@ description: Non-linear Kalman Filter tutorial.
 \end{displaymath}
 </equation></td>
 </tr>
+<tr>
+<td>
+<p>Covariance Prediction</p>
+<p>(Predict error levels)</p>
+</td>
+<td><equation>
+\begin{displaymath}
+\definecolor{lightgray}{rgb}{0.7,0.7,0.7}
+\definecolor{orange}{rgb}{1.0,0.5,0.0}
+\textcolor{lightgray}{\textbf{P}_{predicted}} = F_{n-1}\textcolor{lightgray}{\textbf{P_{n-1}}}F_{n-1}^T + Q
+\end{displaymath}
+</equation></td>
 </tr>
 </tbody>
 </table>
