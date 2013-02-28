@@ -59,6 +59,19 @@ description: Non-linear Kalman Filter tutorial.
 \end{displaymath}
 </equation></td>
 </tr>
+<tr>
+<td>
+<p>Residual</p>
+<p>(Find deviation from prediction)</p>
+</td>
+<td><equation>
+\begin{displaymath}
+\definecolor{lightgray}{rgb}{0.7,0.7,0.7}
+\definecolor{orange}{rgb}{1.0,0.5,0.0}
+\textcolor{lightgray}{\textbf{y}_{predicted}} = z_{k}-h(\hat{x})
+\end{displaymath}
+</equation></td>
+</tr>
 </tbody>
 </table>
 <p>&nbsp;</p>
