@@ -246,6 +246,7 @@ V_{n} = V_{n-1} \rightarrow A = \left[ \begin{array}{c}
 <p><showgraph src="kalman1.ppy" /></p>
 <p>For brevity, I don't list all the code in this guide. The complete file is available: <a href="kalman1.py.txt">kalman1.py</a> . I highly recommend you read through it and play with the starting values.</p>
 <p>&nbsp;</p>
+<p><strong>NOTE: The single-variable example is for simple illustrative purposes only.  For a real-world project involving smoothing out a single variable of time-series data, I would suggest using a <a href="http://en.wikipedia.org/wiki/Low-pass_filter">low-pass filter</a>.  It's a lot less coding for basically the same result.</strong></p>
 <h2>Multi-Variable Example</h2>
 <br />
 <h3>Situation</h3>
