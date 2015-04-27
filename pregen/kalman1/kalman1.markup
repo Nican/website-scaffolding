@@ -251,7 +251,7 @@ V_{n} = V_{n-1} \rightarrow A = \left[ \begin{array}{c}
 <br />
 <h3>Situation</h3>
 <p>We will use a common physics problem with a twist. This example will involve firing a ball from a cannon at at 45-degree angle at a muzzle velocity of 100 units/sec. However, we will also have a camera that will record the ball's position from the side every second. The positions measured from the camera have significant measurement error. We also have precise detectors in the ball that give the X and Y velocity every second.</p>
-<p><img src="kalman1/cannon.png" alt="" /></p>
+<p><img src="cannon.png" alt="" /></p>
 <p>(not drawn to scale)</p>
 <p>&nbsp;</p>
 <p>The kinematic equations for this situation, done to death in physics classes around the world, are:</p>
